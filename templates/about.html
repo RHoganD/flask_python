@@ -1,23 +1,31 @@
-{% extends "base.html"  %}
+{% extends "base.html" %}
 {% block content %}
-    <h2>About us</h2>
 
+    <h2>{{ page_title }}</h2>
     <p>
-    
-        On April 26, 2941, Gandalf and the Dwarves arrived at Bag End. After a big tea and supper with Bilbo, they explained
-        themselves and their intentions. Bilbo was at first reluctant to join the group but Gandalf rushed him out of the
-        door.
-        <br>
-        <br>
-        <b>Travels and encounters </b>
-        <br>
-        After traveling for some time and crossing the river Hoarwell, the company were caught and nearly killed and eaten
-        by three hungry trolls. Gandalf returned in time to keep the monsters occupied until dawn when the light of the Sun
-        turned them to stone. Recovering themselves, the Dwarves found that these Trolls had a cave nearby filled with
-        stolen weapons, food, and a small treasure. Amongst the many weapons were Sting (which Bilbo armed himself with, and
-        which he named after a battle with a giant spider), Orcrist (claimed by Thorin), and Glamdring (taken by Gandalf).
-        Remarkably, all were ancient Elvish blades that had been forged several millennia earlier, in the First Age in
-        Gondolin.
-    
+        The formation of the group grew out of a meeting Gandalf had with Thorin in Bree which kindled Thorin's interest in
+		recapturing his long lost family inheritance. (Thorin's grandfather had been the king of the Lonely Mountain when
+		Smaug came and took it.) Remembering that he had once known an adventurous Hobbit on his travels in the Shire,
+		Gandalf decided to add Bilbo to their company because he knew that stealth and cunning were preferable to force.
+		Gandalf also believed that someone like Bilbo could keep the sometimes prideful and stubborn Dwarves from rash
+		action. The superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned to
+		leave on other business, welcomed a fourteenth to fill into their party.
     </p>
-    {% endblock %}
+
+    {% for member in company %}
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h3>{{ member.name }}</h3>
+                <p>{{ member.description }}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+    {% endfor %}
+
+{% endblock %}
