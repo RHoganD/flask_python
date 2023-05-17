@@ -15,17 +15,37 @@
     {% for member in company %}
 
         <div class="row featurette">
-            <div class="col-md-7">
-                <h3>{{ member.name }}</h3>
-                <p>{{ member.description }}</p>
-            </div>
-            <div class="col-md-5">
-                <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
-            </div>
+      <!-- this will display the  odd nubers images to the left and text on the right -->
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+            <!-- this will display the  even nubers images to  the right  and  text on the left -->
+            {% else %}
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+            {% endif %}
+
         </div>
+<!-- THIS is to remove the divider in the list of images in the about page -->
+        {% if loop.index != loop.length %}
 
-        <hr class="featurette-divider">
-
+            <hr class="featurette-divider">
+<!-- this is the end of the ifstatmeent -->
+        {% endif %}
+<!-- this is the end of the forloop -->
     {% endfor %}
 
 {% endblock %}
